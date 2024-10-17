@@ -6,7 +6,7 @@ export default function Header() {
     <div>
       <ol className='space'>
         <li><Link to="/signup"> Sign up</Link></li>
-        <li><Link to="/signin"> Sign in</Link></li>
+        <li><Link to="/signin"> Login</Link></li>
         <li><Link to="/test"> Test</Link></li>
       </ol>
     </div>
