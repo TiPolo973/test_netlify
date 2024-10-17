@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Signin from './Vue/Signin';
-import Signup from './Vue/Signup';
-import Test from './Vue/test';
-import Header from './Vue/Header';
+import Signin from './components/Signin';
+import Signup from './components/Signup';
+import Test from './components/test';
+import Header from './components/Header';
 
 function App() {
   return (
