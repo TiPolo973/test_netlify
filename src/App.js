@@ -3,6 +3,8 @@ import Signin from './components/Signin';
 import Signup from './components/Signup';
 import Test from './components/test';
 import Header from './components/Header';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 function App() {
   return (
