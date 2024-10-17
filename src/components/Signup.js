@@ -9,13 +9,12 @@ export default function Signup() {
     const [nom, setNom] = useState('');
     const [adresse, setAdresse] = useState('');
     const [age, setAge] = useState('');
-    const [sexe, setSexe] = useState('');
+    const [sexe, setSexe] = useState('Masculin');
     const [password, setPassword] = useState('');
 
-    const senddata = async (event) => {
-        event.preventDefault();
+    const senddata = async () => {
         try {
-            const docRef = await addDoc(collection(db, "user"),{
+            const docRef = await addDoc(collection(db, "users"),{
                 prenom: prenom,
                 nom: nom,
                 age: age,
@@ -31,8 +30,7 @@ export default function Signup() {
 
     }
 
-    const signup = async (event) => {
-        event.preventDefault();
+    const signup = async () => {
         try {
             const auth = getAuth();
             createUserWithEmailAndPassword(auth, adresse, password)
@@ -45,11 +43,18 @@ export default function Signup() {
         }
     }
 
+    const handlesubmit = async (event) =>{
+        event.preventDefault();
+
+        await signup();
+        await senddata();
+    }
 
   return (
     <div className="container mt-5">
         <h2 className="text-center mb-4">Inscription</h2>
-        <form className="form" onSubmit={signup}>
+        <form className="form" onSubmit={handlesubmit}>
+
           <div className="mb-3">
             <label className="form-label">Prénom</label>
             <input type="text" className="form-control" placeholder="Entrez votre prénom" value={prenom} onChange={(e)=>setPrenom(e.target.value)} />

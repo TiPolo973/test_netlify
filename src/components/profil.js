@@ -1,21 +1,19 @@
 import React from "react";
-import { getAuth } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 export default function Test() {
-  const Récupérer = async () => {
-    const auth = getAuth();
-    const user = auth.currentUser;
-    try {
-      if (user !== null) {
-        const displayName = user.displayName;
-        const email = user.email;
-        const photoURL = user.photoURL;
-        const emailVerified = user.emailVerified;
-        const uid = user.uid;
-      }
-    } catch (error) {
-      console.error('Erreur', error);
+
+
+  const Récupérer = async (event) => {
+  const auth = getAuth();
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      const uid = user.uid;
+      console.log(uid);
+    } else {
+      console.log('Personne est connecter');
     }
+  });
   };
   return (
     <div>

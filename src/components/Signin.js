@@ -7,13 +7,16 @@ export default function Signin() {
 
   const signin = async (event) => {
     event.preventDefault();
-    const auth = getAuth();
     try {
-      signInWithEmailAndPassword(auth, mail, password).then(
-        (userCredential) => {
-          const user = userCredential.user;
-        }
-      );
+        const auth = getAuth();
+        signInWithEmailAndPassword(auth, mail, password)
+          .then((userCredential) => {
+            const user = userCredential.user;
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+          });
     } catch (error) {
       console.error("Une erreur :", error);
     }
@@ -57,7 +60,7 @@ const déco = async () =>{
         </div>
 
         <button className="btn btn-primary w-100" type="submit">
-          Envoyer
+          Connexion
         </button>
       </form>
       <button className="btn btn-primary" onClick={déco}>Déconnexion</button>
